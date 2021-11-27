@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Total Focus</string>
+
+
+    <!--Activity Titles-->
+    <string name="label_Login">Iniciar Sesion</string>
+    <string name="label_Register">Registrarse</string>
+
+    <!--Tabs Titles-->
+    <string name="tab_text_1">Cursos</string>
+    <string name="tab_text_2">Notas</string>
+    <string name="tab_text_3">Tarjetas</string>
+    <string name="tab_text_4">Horario</string>
+
+    <!--Login and Register Forms-->
+    <string name="title_login">Iniciar sesión con tu cuenta</string>
+    <string name="title_register">Crear una cuenta nueva</string>
+
+    <string name="label_email">Email</string>
+    <string name="label_name">Nombre</string>
+    <string name="label_last_name">Apellido</string>
+    <string name="label_register">Registrase</string>
+    <string name="label_password">Contraseña</string>
+    <string name="label_login">Iniciar sesion</string>
+    <string name="label_check_password">Confirmar Contraseña</string>
+    <string name="img_title_login">Bienvenido Inicia session</string>
+
+</resources>
