@@ -15,6 +15,7 @@
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.33" />
         <entry key="app/src/main/res/layout/card_course.xml" value="0.5" />
         <entry key="app/src/main/res/layout/card_note.xml" value="0.67" />
+        <entry key="app/src/main/res/layout/card_postit.xml" value="0.3296875" />
         <entry key="app/src/main/res/layout/card_postit_back.xml" value="0.67" />
         <entry key="app/src/main/res/layout/card_postit_front.xml" value="0.67" />
         <entry key="app/src/main/res/layout/card_timetable.xml" value="0.5" />
