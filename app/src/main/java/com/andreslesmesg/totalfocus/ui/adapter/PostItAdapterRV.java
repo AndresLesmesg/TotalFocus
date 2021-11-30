@@ -19,6 +19,10 @@ public class PostItAdapterRV extends RecyclerView.Adapter<PostItAdapterRV.ViewHo
 
     ArrayList<PostIt> postIts;
 
+    public PostItAdapterRV(ArrayList<PostIt> postIts) {
+        this.postIts = postIts;
+    }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

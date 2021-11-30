@@ -17,6 +17,10 @@ public class TimetableAdapterRV extends RecyclerView.Adapter<TimetableAdapterRV.
 
     ArrayList<Timetable> timetables;
 
+    public TimetableAdapterRV(ArrayList<Timetable> timetables) {
+        this.timetables = timetables;
+    }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

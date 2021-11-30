@@ -9,6 +9,12 @@ public class Course {
     private Uri imageUri;
     public final String[] CATEGORIES = {"Arte", "Cocina", "Tecnología", "Manualidades", "Capacitación"};
 
+    public Course(String title, int category) {
+        this.title = title;
+        this.category = category;
+    }
+
+
     public Course(String title, int category, Uri imageUri) {
         this.title = title;
         this.category = category;

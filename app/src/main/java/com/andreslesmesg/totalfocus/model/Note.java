@@ -7,6 +7,11 @@ public class Note {
     private Boolean favorite;
     public final String[] CATEGORIES = {"Arte", "Cocina", "Tecnología", "Manualidades", "Capacitación"};
 
+    public Note(String title, int category) {
+        this.title = title;
+        this.category = category;
+    }
+
     public Note(String title, int category, Boolean favorite) {
         this.title = title;
         this.category = category;

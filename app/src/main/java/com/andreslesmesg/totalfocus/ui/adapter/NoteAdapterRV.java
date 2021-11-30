@@ -19,6 +19,10 @@ public class NoteAdapterRV extends RecyclerView.Adapter<NoteAdapterRV.ViewHolder
 
     ArrayList<Note> notes;
 
+    public NoteAdapterRV(ArrayList<Note> notes) {
+        this.notes = notes;
+    }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
