@@ -26,6 +26,7 @@ import com.andreslesmesg.totalfocus.ui.adapter.PostItAdapterRV;
 import com.andreslesmesg.totalfocus.ui.adapter.TimetableAdapterRV;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -102,19 +103,36 @@ public class PlaceholderFragment extends Fragment {
     }
 
     private ArrayList<Course> getCourses() {
-        return null;
+        ArrayList<Course> data = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            data.add(new Course("Curso # "+(i+1), (int) ((Math.random() * 4))));
+        }
+        return data;
     }
 
     private ArrayList<Note> getNotes() {
-        return null;
+        ArrayList<Note> data = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            data.add(new Note("Nota # "+(i+1), (int) ((Math.random() * 4))));
+        }
+        return data;
     }
 
     private ArrayList<PostIt> getPostIts() {
-        return null;
+
+        ArrayList<PostIt> data = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            data.add(new PostIt("Tilulo # "+(i+1), "Contenido # "+(i+1)));
+        }
+        return data;
     }
 
     private ArrayList<Timetable> getTimetables() {
-        return null;
+        ArrayList<Timetable> data = new ArrayList<>();
+        for (int i = 0; i < 6; i++) {
+            data.add(new Timetable("Horario # "+(i+1)));
+        }
+        return data;
     }
 
     @Override
