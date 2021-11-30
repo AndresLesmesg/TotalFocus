@@ -46,8 +46,21 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+
+                switch (binding.viewPager.getCurrentItem()){
+                    case 0:
+                        navToCourse();
+                        break;
+                    case 1:
+                        navToNote();
+                        break;
+                    case 2:
+                        navToPostIt();
+                        break;
+                    case 3:
+                        navToTimetable();
+                        break;
+                }
             }
         });
     }
@@ -55,5 +68,26 @@ public class MainActivity extends AppCompatActivity {
     private void navToLogin(){
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
+    }
+    private void navToCourse(){
+        Intent intent = new Intent(this, CourseActivity.class);
+        startActivity(intent);
+    }
+    private void navToNote(){
+        Intent intent = new Intent(this, NoteActivity.class);
+        startActivity(intent);
+    }
+    private void navToPostIt(){
+        Intent intent = new Intent(this, PosItActivity.class);
+        startActivity(intent);
+    }
+    private void navToTimetable(){
+        Intent intent = new Intent(this, TimetableActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 }

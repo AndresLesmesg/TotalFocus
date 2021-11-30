@@ -24,5 +24,19 @@
     <string name="label_login">Iniciar sesion</string>
     <string name="label_check_password">Confirmar Contraseña</string>
     <string name="img_title_login">Bienvenido Inicia session</string>
+    <string name="label_curse">Nueva Clase</string>
+    <string name="label_note">Nueva Nota</string>
+    <string name="label_postit">Nueva Tarjeta</string>
+    <string name="label_timetable">Nuevo Horario</string>
+    <string name="hint_title_course">Nombre de la clase</string>
+    <string name="label_load_image">subir imagen</string>
+    <string name="label_save">Guargar</string>
+    <string name="label_title_note">Titulo de Nota</string>
+    <string name="label_title_course">Nombre de la Clase</string>
+    <string name="label_select_category">selecione un categoria</string>
+    <string name="label_content_note">Contenido de la nota ...</string>
+    <string name="label_select_course">Selecione una clase</string>
+    <string name="label_title_postit">Titulo de la Tarjeta</string>
+    <string name="label_content_postit">Contenido de la Tarjeta...</string>
 
 </resources>
