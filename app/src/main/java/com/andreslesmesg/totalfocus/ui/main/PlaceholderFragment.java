@@ -11,8 +11,21 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.andreslesmesg.totalfocus.R;
 import com.andreslesmesg.totalfocus.databinding.FragmentMainBinding;
+import com.andreslesmesg.totalfocus.model.Course;
+import com.andreslesmesg.totalfocus.model.Note;
+import com.andreslesmesg.totalfocus.model.PostIt;
+import com.andreslesmesg.totalfocus.model.Timetable;
+import com.andreslesmesg.totalfocus.ui.adapter.CourseAdapterRV;
+import com.andreslesmesg.totalfocus.ui.adapter.NoteAdapterRV;
+import com.andreslesmesg.totalfocus.ui.adapter.PostItAdapterRV;
+import com.andreslesmesg.totalfocus.ui.adapter.TimetableAdapterRV;
+
+import java.util.ArrayList;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -23,6 +36,7 @@ public class PlaceholderFragment extends Fragment {
 
     private PageViewModel pageViewModel;
     private FragmentMainBinding binding;
+    private RecyclerView rv_container;
 
     public static PlaceholderFragment newInstance(int index) {
         PlaceholderFragment fragment = new PlaceholderFragment();
@@ -51,6 +65,32 @@ public class PlaceholderFragment extends Fragment {
         binding = FragmentMainBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        rv_container = root.findViewById(R.id.rv_container);
+        rv_container.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        pageViewModel.getIndex().observe(getViewLifecycleOwner(), new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                switch (integer){
+                    case 1:
+                        CourseAdapterRV courseAdapterRV = new CourseAdapterRV(getCourses());
+                        rv_container.setAdapter(courseAdapterRV);
+                        break;
+                    case 2:
+                        NoteAdapterRV noteAdapterRV = new NoteAdapterRV(getNotes());
+                        rv_container.setAdapter(noteAdapterRV);
+                        break;
+                    case 3:
+                        PostItAdapterRV postItAdapterRV = new PostItAdapterRV(getPostIts());
+                        rv_container.setAdapter(postItAdapterRV);
+                        break;
+                    case 4:
+                        TimetableAdapterRV timetableAdapterRV = new TimetableAdapterRV(getTimetables());
+                        rv_container.setAdapter(timetableAdapterRV);
+                        break;
+                }
+            }
+        });
         //final TextView textView = binding.sectionLabel;
         //pageViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
         //    @Override
@@ -61,9 +101,26 @@ public class PlaceholderFragment extends Fragment {
         return root;
     }
 
+    private ArrayList<Course> getCourses() {
+        return null;
+    }
+
+    private ArrayList<Note> getNotes() {
+        return null;
+    }
+
+    private ArrayList<PostIt> getPostIts() {
+        return null;
+    }
+
+    private ArrayList<Timetable> getTimetables() {
+        return null;
+    }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
     }
+
 }
