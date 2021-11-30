@@ -5,7 +5,7 @@
     android:id="@+id/cv_course"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
+    android:layout_margin="1dp"
     app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="8dp"
     app:cardPreventCornerOverlap="true"
@@ -17,8 +17,8 @@
 
         <ImageView
             android:id="@+id/iv_course"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
@@ -27,14 +27,18 @@
             android:layout_marginLeft="0dp"
             android:layout_marginTop="0dp"
             android:layout_marginBottom="0dp"
-            tools:srcCompat="@tools:sample/avatars" />
+            android:minWidth="130dp"
+            android:minHeight="130dp"
+            app:srcCompat="@drawable/ic_image_default" />
 
         <TextView
             android:id="@+id/tv_title_course"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
             android:foregroundGravity="top|right"
