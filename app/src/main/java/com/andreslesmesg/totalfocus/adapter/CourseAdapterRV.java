@@ -1,5 +1,6 @@
-package com.andreslesmesg.totalfocus.ui.adapter;
+package com.andreslesmesg.totalfocus.adapter;
 
+import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +19,7 @@ import java.util.ArrayList;
 
 public class CourseAdapterRV extends RecyclerView.Adapter<CourseAdapterRV.ViewHolder> {
 
-    ArrayList<Course> courses;
+    private final ArrayList<Course> courses;
 
     public CourseAdapterRV(ArrayList<Course> courses){
         this.courses = courses;

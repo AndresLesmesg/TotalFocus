@@ -1,4 +1,4 @@
-package com.andreslesmesg.totalfocus.ui.adapter;
+package com.andreslesmesg.totalfocus.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;

@@ -1,12 +1,10 @@
-package com.andreslesmesg.totalfocus.ui.main;
+package com.andreslesmesg.totalfocus.view.main;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
@@ -14,19 +12,19 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import com.andreslesmesg.totalfocus.R;
 import com.andreslesmesg.totalfocus.databinding.FragmentMainBinding;
 import com.andreslesmesg.totalfocus.model.Course;
 import com.andreslesmesg.totalfocus.model.Note;
 import com.andreslesmesg.totalfocus.model.PostIt;
 import com.andreslesmesg.totalfocus.model.Timetable;
-import com.andreslesmesg.totalfocus.ui.adapter.CourseAdapterRV;
-import com.andreslesmesg.totalfocus.ui.adapter.NoteAdapterRV;
-import com.andreslesmesg.totalfocus.ui.adapter.PostItAdapterRV;
-import com.andreslesmesg.totalfocus.ui.adapter.TimetableAdapterRV;
+import com.andreslesmesg.totalfocus.adapter.CourseAdapterRV;
+import com.andreslesmesg.totalfocus.adapter.NoteAdapterRV;
+import com.andreslesmesg.totalfocus.adapter.PostItAdapterRV;
+import com.andreslesmesg.totalfocus.adapter.TimetableAdapterRV;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 /**
  * A placeholder fragment containing a simple view.

@@ -46,7 +46,7 @@
             android:inputType="textPersonName" />
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/btn_save_postit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"

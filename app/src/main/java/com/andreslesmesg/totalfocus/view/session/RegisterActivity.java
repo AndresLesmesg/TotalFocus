@@ -1,4 +1,4 @@
-package com.andreslesmesg.totalfocus.ui.session;
+package com.andreslesmesg.totalfocus.view.session;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.andreslesmesg.totalfocus.MainActivity;
+import com.andreslesmesg.totalfocus.view.MainActivity;
 import com.andreslesmesg.totalfocus.R;
 
 public class RegisterActivity extends AppCompatActivity {

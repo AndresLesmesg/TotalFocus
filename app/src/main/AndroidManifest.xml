@@ -16,7 +16,7 @@
         android:theme="@style/Theme.TotalFocus">
 
         <activity
-            android:name=".MainActivity"
+            android:name=".view.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.TotalFocus.NoActionBar">
@@ -27,33 +27,33 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.session.LoginActivity"
+            android:name=".view.session.LoginActivity"
             android:label="@string/label_Login"
             android:exported="false">
         </activity>
         <activity
-            android:name=".ui.session.RegisterActivity"
+            android:name=".view.session.RegisterActivity"
             android:label="@string/label_Register"
             android:exported="false">
         </activity>
         <activity
-            android:name=".CourseActivity"
+            android:name=".view.CourseActivity"
             android:label="@string/label_curse"
             android:exported="false">
         </activity>
         <activity
-            android:name=".NoteActivity"
+            android:name=".view.NoteActivity"
             android:label="@string/label_note"
             android:exported="false">
         </activity>
 
         <activity
-            android:name=".PosItActivity"
+            android:name=".view.PosItActivity"
             android:label="@string/label_postit"
             android:exported="false">
         </activity>
         <activity
-            android:name=".TimetableActivity"
+            android:name=".view.TimetableActivity"
             android:label="@string/label_timetable"
             android:exported="false">
         </activity>

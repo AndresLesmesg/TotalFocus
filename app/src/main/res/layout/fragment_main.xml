@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:paddingLeft="4dp"
     android:paddingRight="4dp"
-    tools:context=".ui.main.PlaceholderFragment">
+    tools:context=".view.main.PlaceholderFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_container"

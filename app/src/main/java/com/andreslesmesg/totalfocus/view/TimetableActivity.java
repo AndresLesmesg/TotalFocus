@@ -1,14 +1,17 @@
-package com.andreslesmesg.totalfocus;
+package com.andreslesmesg.totalfocus.view;
 
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class NoteActivity extends AppCompatActivity {
+import com.andreslesmesg.totalfocus.R;
+
+public class TimetableActivity extends AppCompatActivity {
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_note);
+        setContentView(R.layout.activity_timetable);
     }
 }

@@ -1,21 +1,19 @@
-package com.andreslesmesg.totalfocus;
+package com.andreslesmesg.totalfocus.view;
 
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.andreslesmesg.totalfocus.ui.session.LoginActivity;
+import com.andreslesmesg.totalfocus.view.session.LoginActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
-import com.andreslesmesg.totalfocus.ui.main.SectionsPagerAdapter;
+import com.andreslesmesg.totalfocus.view.main.SectionsPagerAdapter;
 import com.andreslesmesg.totalfocus.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
@@ -86,8 +84,4 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
 }
