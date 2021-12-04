@@ -38,5 +38,7 @@
     <string name="label_select_course">Selecione una clase</string>
     <string name="label_title_postit">Titulo de la Tarjeta</string>
     <string name="label_content_postit">Contenido de la Tarjeta...</string>
+    <string name="label_delete">Eliminar</string>
+    <string name="label_edit">Editar</string>
 
 </resources>

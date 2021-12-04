@@ -42,7 +42,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="16dp"
             android:text="Category"
-            android:textColor="@color/gray_400" />
+            android:textColor="@color/gray_600" />
 
         <ImageButton
             android:id="@+id/btn_favorite_note"

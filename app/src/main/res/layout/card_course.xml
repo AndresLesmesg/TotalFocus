@@ -58,7 +58,7 @@
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
             android:text="Category"
-            android:textColor="@color/gray_400" />
+            android:textColor="@color/gray_600" />
 
         <ImageButton
             android:id="@+id/btn_more_course"

@@ -3,11 +3,14 @@ package com.andreslesmesg.totalfocus.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.andreslesmesg.totalfocus.R;
@@ -17,7 +20,7 @@ import java.util.ArrayList;
 
 public class NoteAdapterRV extends RecyclerView.Adapter<NoteAdapterRV.ViewHolder> {
 
-    ArrayList<Note> notes;
+    private final ArrayList<Note> notes;
 
     public NoteAdapterRV(ArrayList<Note> notes) {
         this.notes = notes;
@@ -33,6 +36,15 @@ public class NoteAdapterRV extends RecyclerView.Adapter<NoteAdapterRV.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.loadData(notes.get(position));
+        int index = position;
+
+        holder.btn_favorite_note.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                holder.switchFavorite(notes.get(index));
+                holder.btn_favorite_note.setAnimation(holder.fadeOut);
+            }
+        });
     }
 
     @Override
@@ -42,24 +54,47 @@ public class NoteAdapterRV extends RecyclerView.Adapter<NoteAdapterRV.ViewHolder
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        CardView cv_note;
-        TextView tv_title_note;
-        TextView tv_category_note;
-        ImageButton btn_favorite_note;
-        ImageButton btn_more_note;
+        private boolean switchFavoriteNote = false;
+
+        private CardView cv_note;
+        private TextView tv_title_note;
+        private TextView tv_category_note;
+        private ImageButton btn_favorite_note;
+        private ImageButton btn_more_note;
+        private Animation fadeOut;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+
             cv_note = itemView.findViewById(R.id.cv_note);
             tv_title_note = itemView.findViewById(R.id.tv_title_note);
             tv_category_note = itemView.findViewById(R.id.tv_category_note);
             btn_favorite_note = itemView.findViewById(R.id.btn_favorite_note);
             btn_more_note = itemView.findViewById(R.id.btn_more_note);
+
+            fadeOut = AnimationUtils.loadAnimation(itemView.getContext(), android.R.anim.fade_out);
         }
 
         public void loadData(Note note) {
             tv_title_note.setText(note.getTitle());
             tv_category_note.setText(note.getCategory());
+        }
+        public void switchFavorite(Note note){
+
+            btn_favorite_note.setAnimation(fadeOut);
+            if(note.getFavorite()){
+                note.setFavorite(false);
+                btn_favorite_note.setColorFilter(ContextCompat.
+                        getColor(itemView.getContext(), R.color.gray_600));
+                switchFavoriteNote = false;
+
+            }
+            else {
+                note.setFavorite(true);
+                btn_favorite_note.setColorFilter(ContextCompat.
+                        getColor(itemView.getContext(), R.color.cyan_700));
+                switchFavoriteNote = true;
+            }
         }
     }
 }

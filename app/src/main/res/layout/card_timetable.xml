@@ -42,7 +42,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="16dp"
             android:text="Monday, Tursday"
-            android:textColor="@color/gray_400"
+            android:textColor="@color/gray_600"
             android:textSize="12sp" />
 
         <TextView
@@ -56,7 +56,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginBottom="16dp"
             android:text="8:00 AM - 10:00 AM"
-            android:textColor="@color/gray_400"
+            android:textColor="@color/gray_600"
             android:textSize="12sp" />
 
         <Switch

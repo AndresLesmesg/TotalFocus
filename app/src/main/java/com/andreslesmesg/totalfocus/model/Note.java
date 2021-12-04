@@ -10,6 +10,7 @@ public class Note {
     public Note(String title, int category) {
         this.title = title;
         this.category = category;
+        this.favorite = false;
     }
 
     public Note(String title, int category, Boolean favorite) {
@@ -41,4 +42,5 @@ public class Note {
     public void setFavorite(Boolean favorite) {
         this.favorite = favorite;
     }
+
 }

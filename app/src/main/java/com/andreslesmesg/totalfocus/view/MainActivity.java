@@ -11,7 +11,6 @@ import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
-import android.widget.Toast;
 
 import com.andreslesmesg.totalfocus.view.main.SectionsPagerAdapter;
 import com.andreslesmesg.totalfocus.databinding.ActivityMainBinding;
@@ -30,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
         sessionStatus = false;
 
-        if(!sessionStatus){
+        if(sessionStatus){
             navToLogin();
         }
 
