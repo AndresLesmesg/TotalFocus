@@ -44,7 +44,7 @@ public class PostIt {
         this.detail = detail;
     }
 
-    public boolean isFavorite() {
+    public boolean getFavorite() {
         return favorite;
     }
 
@@ -52,7 +52,7 @@ public class PostIt {
         this.favorite = favorite;
     }
 
-    public boolean isOrientation() {
+    public boolean getOrientation() {
         return orientation;
     }
 
