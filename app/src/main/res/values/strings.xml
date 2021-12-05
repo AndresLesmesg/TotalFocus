@@ -40,5 +40,15 @@
     <string name="label_content_postit">Contenido de la Tarjeta...</string>
     <string name="label_delete">Eliminar</string>
     <string name="label_edit">Editar</string>
+    <string name="label_title_timetable">Titulo del horario</string>
+    <string name="label_hour_timetable">Hora de Inicio</string>
+    <string name="label_days_timetable">Dias de la semana</string>
+    <string name="initial_monday">L</string>
+    <string name="initial_tuesday">M</string>
+    <string name="initial_wednesday">M</string>
+    <string name="initial_thursday">J</string>
+    <string name="initial_friday">V</string>
+    <string name="initial_saturday">S</string>
+    <string name="initial_sunday">D</string>
 
 </resources>

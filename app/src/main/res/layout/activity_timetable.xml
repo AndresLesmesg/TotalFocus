@@ -4,17 +4,147 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    android:orientation="vertical"
-    android:gravity="center">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:gravity="center"
         android:orientation="vertical"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
+        <EditText
+            android:id="@+id/et_title_timetable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:ems="16"
+            android:hint="@string/label_title_timetable"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_label_hour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/label_hour_timetable"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName5" />
+
+        <TimePicker
+            android:id="@+id/timePicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:timePickerMode="spinner"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+        <TextView
+            android:id="@+id/tv_label_days"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/label_days_timetable"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/timePicker" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btn_day_1"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/btn_rounder"
+                android:text="@string/initial_monday"
+                android:textSize="10sp" />
+
+            <Button
+                android:id="@+id/btn_day_2"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/btn_rounder"
+                android:textSize="10sp"
+                android:layout_toEndOf="@+id/btn_day_1"
+                android:layout_marginLeft="8dp"
+                android:text="@string/initial_tuesday" />
+
+            <Button
+                android:id="@+id/btn_day_3"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/btn_rounder"
+                android:textSize="10sp"
+                android:layout_toEndOf="@+id/btn_day_2"
+                android:layout_marginLeft="8dp"
+                android:text="@string/initial_wednesday" />
+
+            <Button
+                android:id="@+id/btn_day_4"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/btn_rounder"
+                android:textSize="10sp"
+                android:layout_toEndOf="@+id/btn_day_3"
+                android:layout_marginLeft="8dp"
+                android:text="@string/initial_thursday" />
+
+            <Button
+                android:id="@+id/btn_day_5"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/btn_rounder"
+                android:textSize="10sp"
+                android:layout_toEndOf="@+id/btn_day_4"
+                android:layout_marginLeft="8dp"
+                android:text="@string/initial_friday" />
+
+            <Button
+                android:id="@+id/btn_day_6"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/btn_rounder"
+                android:textSize="10sp"
+                android:layout_toEndOf="@+id/btn_day_5"
+                android:layout_marginLeft="8dp"
+                android:text="@string/initial_saturday" />
+
+            <Button
+                android:id="@+id/btn_day_7"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/btn_rounder"
+                android:textSize="10sp"
+                android:layout_toEndOf="@+id/btn_day_6"
+                android:layout_marginLeft="8dp"
+                android:text="@string/initial_sunday" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btn_save_timetable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:padding="16dp"
+            android:text="@string/label_save" />
+
+
     </LinearLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
