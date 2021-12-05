@@ -94,7 +94,7 @@ public class PostItAdapterRV extends RecyclerView.Adapter<PostItAdapterRV.ViewHo
         @SuppressLint("SetTextI18n")
         public void switchContent(PostIt postIt){
             btn_favorite_post.setAnimation(switchCard);
-            if(postIt.isOrientation()){
+            if(postIt.getOrientation()){
                 postIt.setOrientation(false);
                 tv_content_post.setTextColor(itemView.getContext().
                         getResources().getColor(R.color.gray_600));
@@ -114,7 +114,7 @@ public class PostItAdapterRV extends RecyclerView.Adapter<PostItAdapterRV.ViewHo
         public void switchFavorite(PostIt postIt){
 
             btn_favorite_post.setAnimation(fadeOut);
-            if(postIt.isFavorite()){
+            if(postIt.getFavorite()){
                 postIt.setFavorite(false);
                 btn_favorite_post.setColorFilter(ContextCompat.
                         getColor(itemView.getContext(), R.color.gray_600),
