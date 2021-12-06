@@ -26,9 +26,6 @@ import com.andreslesmesg.totalfocus.adapter.TimetableAdapterRV;
 
 import java.util.ArrayList;
 
-/**
- * A placeholder fragment containing a simple view.
- */
 public class PlaceholderFragment extends Fragment {
 
     private static final String ARG_SECTION_NUMBER = "section_number";

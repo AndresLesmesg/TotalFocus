@@ -39,4 +39,8 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         // Show total pages.
         return TAB_TITLES.length;
     }
+
+    public Context getContextFragment() {
+        return mContext;
+    }
 }

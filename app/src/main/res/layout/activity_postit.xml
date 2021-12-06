@@ -27,7 +27,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/et_content_postit"
+            android:id="@+id/et_details_post_it"
             android:layout_width="match_parent"
             android:layout_height="250dp"
             android:layout_marginTop="8dp"
@@ -37,7 +37,7 @@
             android:inputType="textMultiLine" />
 
         <EditText
-            android:id="@+id/et_select_clase_in_postit"
+            android:id="@+id/et_category_post_it"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -46,7 +46,7 @@
             android:inputType="textPersonName" />
 
         <Button
-            android:id="@+id/btn_save_postit"
+            android:id="@+id/btn_save_post_it"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"

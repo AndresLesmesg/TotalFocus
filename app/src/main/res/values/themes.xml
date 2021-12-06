@@ -19,6 +19,10 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="SplashScreenTheme" parent="Theme.TotalFocus">
+        <item name="android:windowBackground">@drawable/splash_background</item>
+    </style>
+    
     <style name="Theme.TotalFocus.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.TotalFocus.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />

@@ -1,9 +1,9 @@
 package com.andreslesmesg.totalfocus.adapter;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -19,7 +19,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.andreslesmesg.totalfocus.R;
 import com.andreslesmesg.totalfocus.model.Note;
-import com.andreslesmesg.totalfocus.model.Note;
 import com.andreslesmesg.totalfocus.view.NoteActivity;
 
 import java.util.ArrayList;
@@ -33,6 +32,7 @@ public class NoteAdapterRV extends RecyclerView.Adapter<NoteAdapterRV.ViewHolder
         this.notes = notes;
     }
 
+    @SuppressLint("InflateParams")
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -41,25 +41,17 @@ public class NoteAdapterRV extends RecyclerView.Adapter<NoteAdapterRV.ViewHolder
         return new ViewHolder(view);
     }
 
+    @SuppressLint("RecyclerView")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.loadData(notes.get(position));
-        int index = position;
 
-        holder.btn_favorite_note.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                holder.switchFavorite(notes.get(index));
-                holder.btn_favorite_note.setAnimation(holder.fadeOut);
-            }
+        holder.btn_favorite_note.setOnClickListener(v -> {
+            holder.switchFavorite(notes.get(position));
+            holder.btn_favorite_note.setAnimation(holder.fadeOut);
         });
 
-        holder.btn_more_note.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                holder.showMenu(notes.get(index), index);
-            }
-        });
+        holder.btn_more_note.setOnClickListener(v -> holder.showMenu(notes.get(position), position));
     }
 
     @Override
@@ -69,20 +61,17 @@ public class NoteAdapterRV extends RecyclerView.Adapter<NoteAdapterRV.ViewHolder
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private boolean switchFavoriteNote = false;
-
-        private CardView cv_note;
-        private TextView tv_title_note;
-        private TextView tv_category_note;
-        private ImageButton btn_favorite_note;
-        private ImageButton btn_more_note;
-        private Animation fadeOut;
-        private PopupMenu menu;
+        private final TextView tv_title_note;
+        private final TextView tv_category_note;
+        private final ImageButton btn_favorite_note;
+        private final ImageButton btn_more_note;
+        private final Animation fadeOut;
+        private final PopupMenu menu;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             //Views
-            cv_note = itemView.findViewById(R.id.cv_note);
+            CardView cv_note = itemView.findViewById(R.id.cv_note);
             tv_title_note = itemView.findViewById(R.id.tv_title_note);
             tv_category_note = itemView.findViewById(R.id.tv_category_note);
             btn_favorite_note = itemView.findViewById(R.id.btn_favorite_note);
@@ -101,7 +90,7 @@ public class NoteAdapterRV extends RecyclerView.Adapter<NoteAdapterRV.ViewHolder
         public void removeItem(int position) {
             notes.remove(position);
             notifyItemRemoved(position);
-            notifyItemChanged(position);
+            notifyItemChanged(position, notes.size());
         }
 
         public void switchFavorite(Note note){
@@ -111,40 +100,39 @@ public class NoteAdapterRV extends RecyclerView.Adapter<NoteAdapterRV.ViewHolder
                 note.setFavorite(false);
                 btn_favorite_note.setColorFilter(ContextCompat.
                         getColor(itemView.getContext(), R.color.gray_600));
-                switchFavoriteNote = false;
 
             }
             else {
                 note.setFavorite(true);
                 btn_favorite_note.setColorFilter(ContextCompat.
                         getColor(itemView.getContext(), R.color.cyan_700));
-                switchFavoriteNote = true;
             }
         }
 
+        @SuppressLint("NonConstantResourceId")
         public void showMenu(Note note, int position) {
             menu.getMenu().clear(); //Clear Menu - Fix Generate infinite Menu
             menu.getMenuInflater().inflate(R.menu.menu_resource, menu.getMenu());
-            menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            menu.setOnMenuItemClickListener(item -> {
 
-                @Override
-                public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.item_edit:
+                        Intent intent = new Intent(itemView.getContext(), NoteActivity.class);
 
-                    switch (item.getItemId()){
-                        case R.id.item_edit:
-                            Intent intent = new Intent(itemView.getContext(), NoteActivity.class);
-                            intent.putExtra("index", position);
-                            intent.putExtra("title", note.getTitle());
-                            intent.putExtra("content", note.getContent());
-                            intent.putExtra("category", note.getCategory());
-                            context.startActivity(intent);
-                            break;
-                        case R.id.item_delete:
-                            removeItem(position);
-                            break;
-                    }
-                    return false;
+                        intent.putExtra("index", position);
+                        intent.putExtra("title", note.getTitle());
+                        intent.putExtra("content", note.getContent());
+                        intent.putExtra("category", note.getCategory());
+                        intent.putExtra("favorite", note.getFavorite());
+
+                        context.startActivity(intent);
+                        break;
+
+                    case R.id.item_delete:
+                        removeItem(position);
+                        break;
                 }
+                return false;
             });
             menu.show();
         }

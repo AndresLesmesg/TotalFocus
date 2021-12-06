@@ -1,10 +1,9 @@
 package com.andreslesmesg.totalfocus.adapter;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Parcelable;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
@@ -32,6 +31,7 @@ public class CourseAdapterRV extends RecyclerView.Adapter<CourseAdapterRV.ViewHo
         this.courses = courses;
     }
 
+    @SuppressLint("InflateParams")
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -40,16 +40,11 @@ public class CourseAdapterRV extends RecyclerView.Adapter<CourseAdapterRV.ViewHo
         return new ViewHolder(view);
     }
 
+    @SuppressLint("RecyclerView")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.loadData(courses.get(position));
-        int index = position;
-        holder.btn_more_course.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                holder.showMenu(courses.get(index), index);
-            }
-        });
+        holder.btn_more_course.setOnClickListener(v -> holder.showMenu(courses.get(position), position));
     }
 
     @Override
@@ -59,7 +54,6 @@ public class CourseAdapterRV extends RecyclerView.Adapter<CourseAdapterRV.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        private final CardView cv_course;
         private final ImageView iv_course;
         private final TextView tv_title_course;
         private final TextView tv_category_course;
@@ -68,7 +62,7 @@ public class CourseAdapterRV extends RecyclerView.Adapter<CourseAdapterRV.ViewHo
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            cv_course = itemView.findViewById(R.id.cv_course);
+            CardView cv_course = itemView.findViewById(R.id.cv_course);
             iv_course = itemView.findViewById(R.id.iv_course);
             tv_title_course = itemView.findViewById(R.id.tv_title_course);
             tv_category_course = itemView.findViewById(R.id.tv_category_course);
@@ -86,32 +80,30 @@ public class CourseAdapterRV extends RecyclerView.Adapter<CourseAdapterRV.ViewHo
         public void removeItem(int position) {
             courses.remove(position);
             notifyItemRemoved(position);
-            notifyItemChanged(position);
+            notifyItemChanged(position, courses.size());
         }
 
+        @SuppressLint("NonConstantResourceId")
         public void showMenu(Course course, int position) {
             menu.getMenu().clear(); //Clear Menu - Fix Generate infinite Menu
             menu.getMenuInflater().inflate(R.menu.menu_resource, menu.getMenu());
-            menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            menu.setOnMenuItemClickListener(item -> {
 
-                @Override
-                public boolean onMenuItemClick(MenuItem item) {
-
-                    switch (item.getItemId()){
-                        case R.id.item_edit:
-                            Intent intent = new Intent(itemView.getContext(), CourseActivity.class);
-                            intent.putExtra("index", position);
-                            intent.putExtra("title", course.getTitle());
-                            intent.putExtra("category", course.getCategory());
-                            //intent.putExtra("image", course.getImageUri());
-                            context.startActivity(intent);
-                            break;
-                        case R.id.item_delete:
-                                removeItem(position);
-                            break;
-                    }
-                    return false;
+                switch (item.getItemId()){
+                    case R.id.item_edit:
+                        Intent intent = new Intent(itemView.getContext(), CourseActivity.class);
+                        intent.putExtra("index", position);
+                        intent.putExtra("title", course.getTitle());
+                        intent.putExtra("category", course.getCategory());
+                        intent.putExtra("image", course.getImageUri());
+                        context.startActivity(intent);
+                        break;
+                    case R.id.item_delete:
+                            removeItem(position);
+                            Toast.makeText(context, "delete index"+position+" ", Toast.LENGTH_LONG).show();
+                        break;
                 }
+                return false;
             });
             menu.show();
         }

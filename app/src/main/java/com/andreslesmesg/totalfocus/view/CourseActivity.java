@@ -1,21 +1,15 @@
 package com.andreslesmesg.totalfocus.view;
 
-import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.andreslesmesg.totalfocus.R;
-import com.andreslesmesg.totalfocus.model.Course;
 
 import java.io.Serializable;
 
@@ -57,16 +51,13 @@ public class CourseActivity extends AppCompatActivity implements Serializable {
             //load image
         }
 
-        btn_save_course.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(CourseActivity.this, MainActivity.class);
-                intent.putExtra("index", position);
-                intent.putExtra("title", et_title_course.getText());
-                intent.putExtra("category", et_category_course.getText());
-                //intent.putExtra("image", course.getImageUri());
-               startActivity(intent);
-            }
+        btn_save_course.setOnClickListener(v -> {
+            Intent intent = new Intent(CourseActivity.this, MainActivity.class);
+            intent.putExtra("index", position);
+            intent.putExtra("title", et_title_course.getText());
+            intent.putExtra("category", et_category_course.getText());
+            //intent.putExtra("image", course.getImageUri());
+           startActivity(intent);
         });
     }
 }

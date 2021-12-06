@@ -2,10 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.andreslesmesg.totalfocus">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -14,7 +14,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TotalFocus">
+        <activity
+            android:name=".SplashScreenActivity"
+            android:theme="@style/SplashScreenTheme"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".view.MainActivity"
             android:exported="true"
@@ -28,36 +37,28 @@
         </activity>
         <activity
             android:name=".view.session.LoginActivity"
-            android:label="@string/label_Login"
-            android:exported="false">
-        </activity>
+            android:exported="true"
+            android:label="@string/label_Login" />
         <activity
             android:name=".view.session.RegisterActivity"
-            android:label="@string/label_Register"
-            android:exported="false">
-        </activity>
+            android:exported="true"
+            android:label="@string/label_Register" />
         <activity
             android:name=".view.CourseActivity"
-            android:label="@string/label_curse"
-            android:exported="false">
-        </activity>
+            android:exported="true"
+            android:label="@string/label_curse" />
         <activity
             android:name=".view.NoteActivity"
-            android:label="@string/label_note"
-            android:exported="false">
-        </activity>
-
+            android:exported="true"
+            android:label="@string/label_note" />
         <activity
             android:name=".view.PosItActivity"
-            android:label="@string/label_postit"
-            android:exported="false">
-        </activity>
+            android:exported="true"
+            android:label="@string/label_postit" />
         <activity
             android:name=".view.TimetableActivity"
-            android:label="@string/label_timetable"
-            android:exported="false">
-        </activity>
-
+            android:exported="true"
+            android:label="@string/label_timetable" />
     </application>
 
 </manifest>

@@ -11,7 +11,6 @@ import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
-import android.widget.Toast;
 
 import com.andreslesmesg.totalfocus.view.main.SectionsPagerAdapter;
 import com.andreslesmesg.totalfocus.databinding.ActivityMainBinding;
@@ -30,10 +29,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         Bundle bundle=getIntent().getExtras();
-        if(bundle!=null){
-
-        }
-
+        //if(bundle!=null){}
 
         //Load to Fragment
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
@@ -71,18 +67,26 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
+
+
     private void navToCourse(){
         Intent intent = new Intent(this, CourseActivity.class);
         startActivity(intent);
     }
+
+
     private void navToNote(){
         Intent intent = new Intent(this, NoteActivity.class);
         startActivity(intent);
     }
+
+
     private void navToPostIt(){
         Intent intent = new Intent(this, PosItActivity.class);
         startActivity(intent);
     }
+
+
     private void navToTimetable(){
         Intent intent = new Intent(this, TimetableActivity.class);
         startActivity(intent);
