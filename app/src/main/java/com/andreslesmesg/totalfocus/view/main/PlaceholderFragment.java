@@ -90,17 +90,11 @@ public class PlaceholderFragment extends Fragment {
                 }
             }
         });
-        //final TextView textView = binding.sectionLabel;
-        //pageViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-        //    @Override
-        //    public void onChanged(@Nullable String s) {
-        //        textView.setText(s);
-        //    }
-        //});
+
         return root;
     }
 
-    private ArrayList<Course> getCourses() {
+    private static ArrayList<Course> getCourses() {
         ArrayList<Course> data = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             data.add(new Course("Curso # "+(i+1), (int) ((Math.random() * 4))));

@@ -11,6 +11,7 @@ import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
+import android.widget.Toast;
 
 import com.andreslesmesg.totalfocus.view.main.SectionsPagerAdapter;
 import com.andreslesmesg.totalfocus.databinding.ActivityMainBinding;
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
     private Boolean sessionStatus;
+    private int index_tab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,19 +29,21 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        sessionStatus = false;
+        Bundle bundle=getIntent().getExtras();
+        if(bundle!=null){
 
-        if(sessionStatus){
-            navToLogin();
         }
 
+
+        //Load to Fragment
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
         ViewPager viewPager = binding.viewPager;
         viewPager.setAdapter(sectionsPagerAdapter);
+
         TabLayout tabs = binding.tabs;
         tabs.setupWithViewPager(viewPager);
-        FloatingActionButton fab = binding.fab;
 
+        FloatingActionButton fab = binding.fab;
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                 }
             }
+
         });
     }
 

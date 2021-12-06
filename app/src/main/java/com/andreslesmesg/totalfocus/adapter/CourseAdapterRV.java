@@ -1,13 +1,17 @@
 package com.andreslesmesg.totalfocus.adapter;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
-
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -15,7 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.andreslesmesg.totalfocus.R;
 import com.andreslesmesg.totalfocus.model.Course;
-import com.andreslesmesg.totalfocus.view.MainActivity;
+import com.andreslesmesg.totalfocus.view.CourseActivity;
 
 import java.util.ArrayList;
 
@@ -39,6 +43,13 @@ public class CourseAdapterRV extends RecyclerView.Adapter<CourseAdapterRV.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.loadData(courses.get(position));
+        int index = position;
+        holder.btn_more_course.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                holder.showMenu(courses.get(index), index);
+            }
+        });
     }
 
     @Override
@@ -46,13 +57,14 @@ public class CourseAdapterRV extends RecyclerView.Adapter<CourseAdapterRV.ViewHo
         return courses.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder{
 
-        CardView cv_course;
-        ImageView iv_course;
-        TextView tv_title_course;
-        TextView tv_category_course;
-        ImageButton btn_more_course;
+        private final CardView cv_course;
+        private final ImageView iv_course;
+        private final TextView tv_title_course;
+        private final TextView tv_category_course;
+        private final ImageButton btn_more_course;
+        private final PopupMenu menu;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -61,12 +73,47 @@ public class CourseAdapterRV extends RecyclerView.Adapter<CourseAdapterRV.ViewHo
             tv_title_course = itemView.findViewById(R.id.tv_title_course);
             tv_category_course = itemView.findViewById(R.id.tv_category_course);
             btn_more_course = itemView.findViewById(R.id.btn_more_course);
+            menu = new PopupMenu(itemView.getContext(), btn_more_course);
+
         }
 
         public void loadData(Course course) {
             iv_course.setImageURI(course.getImageUri());
             tv_title_course.setText(course.getTitle());
             tv_category_course.setText(course.getCategory());
+        }
+
+        public void removeItem(int position) {
+            courses.remove(position);
+            notifyItemRemoved(position);
+            notifyItemChanged(position);
+        }
+
+        public void showMenu(Course course, int position) {
+            menu.getMenu().clear(); //Clear Menu - Fix Generate infinite Menu
+            menu.getMenuInflater().inflate(R.menu.menu_resource, menu.getMenu());
+            menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+
+                @Override
+                public boolean onMenuItemClick(MenuItem item) {
+
+                    switch (item.getItemId()){
+                        case R.id.item_edit:
+                            Intent intent = new Intent(itemView.getContext(), CourseActivity.class);
+                            intent.putExtra("index", position);
+                            intent.putExtra("title", course.getTitle());
+                            intent.putExtra("category", course.getCategory());
+                            //intent.putExtra("image", course.getImageUri());
+                            context.startActivity(intent);
+                            break;
+                        case R.id.item_delete:
+                                removeItem(position);
+                            break;
+                    }
+                    return false;
+                }
+            });
+            menu.show();
         }
     }
 }
