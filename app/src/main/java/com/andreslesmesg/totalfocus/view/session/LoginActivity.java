@@ -16,6 +16,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.andreslesmesg.totalfocus.controller.auth.LoginController;
 import com.andreslesmesg.totalfocus.utilis.ValidateEmail;
 import com.andreslesmesg.totalfocus.view.MainActivity;
 import com.andreslesmesg.totalfocus.R;
@@ -46,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navToHome();
+                LoginController.login(LoginActivity.this, getEmail(), getPassword());
             }
         });
         tv_register.setOnClickListener(new View.OnClickListener() {
@@ -115,8 +116,4 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void navToHome(){
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
 }

@@ -11,9 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.andreslesmesg.totalfocus.R;
 
-import java.io.Serializable;
-
-public class CourseActivity extends AppCompatActivity implements Serializable {
+public class CourseActivity extends AppCompatActivity {
 
     private int position;
     private String title, category, image;
@@ -53,11 +51,13 @@ public class CourseActivity extends AppCompatActivity implements Serializable {
 
         btn_save_course.setOnClickListener(v -> {
             Intent intent = new Intent(CourseActivity.this, MainActivity.class);
+
             intent.putExtra("index", position);
             intent.putExtra("title", et_title_course.getText());
             intent.putExtra("category", et_category_course.getText());
             //intent.putExtra("image", course.getImageUri());
-           startActivity(intent);
+
+            startActivity(intent);
         });
     }
 }

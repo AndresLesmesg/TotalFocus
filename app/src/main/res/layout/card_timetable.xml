@@ -26,7 +26,6 @@
             android:layout_marginTop="16dp"
             android:foregroundGravity="top|right"
             android:gravity="right|top"
-            android:text="Event Name"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -41,7 +40,6 @@
             android:layout_marginLeft="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="16dp"
-            android:text="Monday, Tursday"
             android:textColor="@color/gray_600"
             android:textSize="12sp" />
 
@@ -55,7 +53,6 @@
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginBottom="16dp"
-            android:text="8:00 AM - 10:00 AM"
             android:textColor="@color/gray_600"
             android:textSize="12sp" />
 

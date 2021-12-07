@@ -31,7 +31,7 @@
             android:id="@+id/tv_label_hour"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="16dp"
             android:text="@string/label_hour_timetable"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -39,10 +39,10 @@
             app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName5" />
 
         <TimePicker
-            android:id="@+id/timePicker"
+            android:id="@+id/tp_timetable"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:timePickerMode="spinner"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -52,7 +52,7 @@
             android:id="@+id/tv_label_days"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="16dp"
             android:text="@string/label_days_timetable"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -65,73 +65,103 @@
             android:layout_marginTop="16dp"
             android:gravity="center">
 
-            <Button
+            <TextView
                 android:id="@+id/btn_day_1"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/btn_rounder"
+                android:backgroundTint="@color/teal_700"
+                android:foregroundTintMode="add"
+                android:gravity="center"
                 android:text="@string/initial_monday"
-                android:textSize="10sp" />
+                android:textColor="@color/white"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:tint="@color/white" />
 
-            <Button
+            <TextView
                 android:id="@+id/btn_day_2"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:background="@drawable/btn_rounder"
-                android:textSize="10sp"
-                android:layout_toEndOf="@+id/btn_day_1"
                 android:layout_marginLeft="8dp"
-                android:text="@string/initial_tuesday" />
+                android:layout_toEndOf="@+id/btn_day_1"
+                android:background="@drawable/btn_rounder"
+                android:backgroundTint="@color/teal_700"
+                android:gravity="center"
+                android:text="@string/initial_tuesday"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="10sp" />
 
-            <Button
+            <TextView
                 android:id="@+id/btn_day_3"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:background="@drawable/btn_rounder"
-                android:textSize="10sp"
-                android:layout_toEndOf="@+id/btn_day_2"
                 android:layout_marginLeft="8dp"
-                android:text="@string/initial_wednesday" />
+                android:layout_toEndOf="@+id/btn_day_2"
+                android:background="@drawable/btn_rounder"
+                android:backgroundTint="@color/teal_700"
+                android:gravity="center"
+                android:text="@string/initial_wednesday"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="10sp" />
 
-            <Button
+            <TextView
                 android:id="@+id/btn_day_4"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/btn_rounder"
-                android:textSize="10sp"
+                android:backgroundTint="@color/teal_700"
+                android:gravity="center"
                 android:layout_toEndOf="@+id/btn_day_3"
                 android:layout_marginLeft="8dp"
-                android:text="@string/initial_thursday" />
+                android:text="@string/initial_thursday"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="10sp"/>
 
             <Button
                 android:id="@+id/btn_day_5"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/btn_rounder"
-                android:textSize="10sp"
+                android:backgroundTint="@color/teal_700"
+                android:gravity="center"
                 android:layout_toEndOf="@+id/btn_day_4"
                 android:layout_marginLeft="8dp"
-                android:text="@string/initial_friday" />
+                android:text="@string/initial_friday"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="10sp"/>
 
-            <Button
+            <TextView
                 android:id="@+id/btn_day_6"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/btn_rounder"
-                android:textSize="10sp"
+                android:backgroundTint="@color/teal_700"
+                android:gravity="center"
                 android:layout_toEndOf="@+id/btn_day_5"
                 android:layout_marginLeft="8dp"
-                android:text="@string/initial_saturday" />
+                android:text="@string/initial_saturday"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="10sp" />
 
-            <Button
+            <TextView
                 android:id="@+id/btn_day_7"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:background="@drawable/btn_rounder"
-                android:textSize="10sp"
-                android:layout_toEndOf="@+id/btn_day_6"
                 android:layout_marginLeft="8dp"
-                android:text="@string/initial_sunday" />
+                android:background="@drawable/btn_rounder"
+                android:backgroundTint="@color/teal_700"
+                android:gravity="center"
+                android:layout_toEndOf="@+id/btn_day_6"
+                android:text="@string/initial_sunday"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="10sp" />
         </RelativeLayout>
 
         <Button

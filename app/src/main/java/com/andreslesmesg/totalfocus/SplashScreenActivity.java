@@ -19,15 +19,22 @@ public class SplashScreenActivity extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         if(user==null){
-            navToNewActivity(LoginActivity.class);
+            navToNewActivity(LoginActivity.class, null, null);
         }else{
-            navToNewActivity(MainActivity.class);
+            navToNewActivity(MainActivity.class, user.getEmail(), user.getDisplayName());
         }
 
     }
 
-    private void navToNewActivity(Class classRef){
-        startActivity(new Intent(this, classRef));
+    private void navToNewActivity(Class classRef, String email, String name){
+        Intent intent = new Intent(this, classRef);
+
+        if(email!=null && name!=null){
+            intent.putExtra("name", name);
+            intent.putExtra("email", email);
+        }
+
+        startActivity(intent);
         finish();
     }
 }

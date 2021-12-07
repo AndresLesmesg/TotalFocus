@@ -1,27 +1,22 @@
 package com.andreslesmesg.totalfocus.model;
 
-import java.security.PrivateKey;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Timetable {
 
-    public Timetable(String title) {
-        this.title = title;
-    }
+    private String title;
+    private int hour, min;
+    private boolean notification;
+    private ArrayList<Boolean> enableDays;
+    private final String[] DAYS = {"Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"};
 
-    public Timetable(String title, String hour, String min, boolean notification, ArrayList<Boolean> enableDays) {
+    public Timetable(String title, int hour, int min, boolean notification, ArrayList<Boolean> enableDays) {
         this.title = title;
         this.hour = hour;
         this.min = min;
         this.notification = notification;
         this.enableDays = enableDays;
     }
-
-    private String title;
-    private String hour, min;
-    private boolean notification;
-    private ArrayList<Boolean> enableDays;
 
     public String getTitle() {
         return title;
@@ -31,19 +26,19 @@ public class Timetable {
         this.title = title;
     }
 
-    public String getHour() {
+    public int getHour() {
         return hour;
     }
 
-    public void setHour(String hour) {
+    public void setHour(int hour) {
         this.hour = hour;
     }
 
-    public String getMin() {
+    public int getMin() {
         return min;
     }
 
-    public void setMin(String min) {
+    public void setMin(int min) {
         this.min = min;
     }
 
@@ -63,4 +58,37 @@ public class Timetable {
         this.enableDays = enableDays;
     }
 
+    public String getDays() {
+
+        String days="";
+        int count = 0;
+
+        for (int i = 0; i < DAYS.length; i++) {
+            if (enableDays!=null){
+                if (enableDays.get(i)){
+                    count += 1;
+                }
+            }
+        }
+
+        for (int i = 0; i < DAYS.length; i++) {
+            if (enableDays!=null){
+                if (enableDays.get(i)){
+                    days+=DAYS[i];
+                    if (count>1){
+                        days+=", ";
+                        count -= 1;
+                    }
+                }
+            }
+        }
+        if(days.length()>1){
+            days+=".";
+        }
+        return days;
+    }
+
+    public String getAlarmHour() {
+        return ""+hour+":"+min;
+    }
 }

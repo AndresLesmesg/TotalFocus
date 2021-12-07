@@ -118,8 +118,23 @@ public class PlaceholderFragment extends Fragment {
 
     private ArrayList<Timetable> getTimetables() {
         ArrayList<Timetable> data = new ArrayList<>();
+        ArrayList<Boolean> days = new ArrayList<>();
+
+
+
         for (int i = 0; i < 6; i++) {
-            data.add(new Timetable("Horario # "+(i+1)));
+
+            for (int x = 0; x < 7; x++) {
+                int ranNum = (int) ((Math.random() * 4));
+
+                if(ranNum>2){
+                    days.add(false);
+                }else {
+                    days.add(true);
+                }
+            }
+
+            data.add(new Timetable("Horario # "+(i+1),(int) ((Math.random() * 23)), (int) ((Math.random() * 59)), true, days));
         }
         return data;
     }

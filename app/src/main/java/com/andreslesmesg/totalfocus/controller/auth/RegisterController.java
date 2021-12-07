@@ -50,6 +50,8 @@ public class RegisterController {
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()){
                                 Intent intent = new Intent(context, MainActivity.class);
+                                intent.putExtra("email",user.getEmail());
+                                intent.putExtra("name", user.getName());
                                 context.startActivity(intent);
                             }else {
                                 Toast.makeText(context, "Error al intentar Guardar datos del Usiario", Toast.LENGTH_LONG).show();
