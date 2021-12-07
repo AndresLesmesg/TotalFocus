@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import com.andreslesmesg.totalfocus.model.firebase.ConstFirebase;
 import com.andreslesmesg.totalfocus.model.firebase.User;
-import com.andreslesmesg.totalfocus.view.MainActivity;
+import com.andreslesmesg.totalfocus.MainActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;

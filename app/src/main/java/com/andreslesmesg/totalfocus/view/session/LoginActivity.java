@@ -18,7 +18,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.andreslesmesg.totalfocus.controller.auth.LoginController;
 import com.andreslesmesg.totalfocus.utilis.ValidateEmail;
-import com.andreslesmesg.totalfocus.view.MainActivity;
 import com.andreslesmesg.totalfocus.R;
 
 public class LoginActivity extends AppCompatActivity {

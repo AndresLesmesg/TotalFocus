@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.andreslesmesg.totalfocus.view.MainActivity;
+import com.andreslesmesg.totalfocus.MainActivity;
 import com.andreslesmesg.totalfocus.R;
 
 public class RegisterActivity extends AppCompatActivity {

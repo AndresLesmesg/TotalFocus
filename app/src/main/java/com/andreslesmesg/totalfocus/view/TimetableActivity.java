@@ -12,6 +12,7 @@ import android.widget.TimePicker;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.andreslesmesg.totalfocus.MainActivity;
 import com.andreslesmesg.totalfocus.R;
 
 import java.util.ArrayList;

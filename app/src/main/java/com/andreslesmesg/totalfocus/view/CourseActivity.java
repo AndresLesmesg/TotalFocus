@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.andreslesmesg.totalfocus.MainActivity;
 import com.andreslesmesg.totalfocus.R;
 
 public class CourseActivity extends AppCompatActivity {

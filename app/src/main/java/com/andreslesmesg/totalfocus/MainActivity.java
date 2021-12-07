@@ -1,8 +1,12 @@
-package com.andreslesmesg.totalfocus.view;
+package com.andreslesmesg.totalfocus;
 
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.andreslesmesg.totalfocus.view.CourseActivity;
+import com.andreslesmesg.totalfocus.view.NoteActivity;
+import com.andreslesmesg.totalfocus.view.PosItActivity;
+import com.andreslesmesg.totalfocus.view.TimetableActivity;
 import com.andreslesmesg.totalfocus.view.session.LoginActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
