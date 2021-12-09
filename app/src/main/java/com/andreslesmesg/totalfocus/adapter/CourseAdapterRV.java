@@ -17,6 +17,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.andreslesmesg.totalfocus.R;
+import com.andreslesmesg.totalfocus.controller.CourseController;
 import com.andreslesmesg.totalfocus.model.Course;
 import com.andreslesmesg.totalfocus.view.CourseActivity;
 
@@ -45,6 +46,7 @@ public class CourseAdapterRV extends RecyclerView.Adapter<CourseAdapterRV.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.loadData(courses.get(position));
         holder.btn_more_course.setOnClickListener(v -> holder.showMenu(courses.get(position), position));
+
     }
 
     @Override
@@ -72,15 +74,22 @@ public class CourseAdapterRV extends RecyclerView.Adapter<CourseAdapterRV.ViewHo
         }
 
         public void loadData(Course course) {
-            iv_course.setImageURI(course.getImageUri());
+            extracted(course);
             tv_title_course.setText(course.getTitle());
             tv_category_course.setText(course.getCategory());
         }
 
+        private void extracted(Course course) {
+            iv_course.setImageURI(course.getImageUri());
+        }
+
         public void removeItem(int position) {
+
             courses.remove(position);
             notifyItemRemoved(position);
             notifyItemChanged(position, courses.size());
+            CourseController.deleteCourse(position);
+
         }
 
         @SuppressLint("NonConstantResourceId")
@@ -93,19 +102,17 @@ public class CourseAdapterRV extends RecyclerView.Adapter<CourseAdapterRV.ViewHo
                     case R.id.item_edit:
                         Intent intent = new Intent(itemView.getContext(), CourseActivity.class);
                         intent.putExtra("index", position);
-                        intent.putExtra("title", course.getTitle());
-                        intent.putExtra("category", course.getCategory());
-                        intent.putExtra("image", course.getImageUri());
-                        context.startActivity(intent);
+                        context.startActivityForResult(intent, Activity.RESULT_OK);
+
                         break;
                     case R.id.item_delete:
-                            removeItem(position);
-                            Toast.makeText(context, "delete index"+position+" ", Toast.LENGTH_LONG).show();
+                        removeItem(position);
                         break;
                 }
                 return false;
             });
             menu.show();
+            notifyItemChanged(position);
         }
     }
 }

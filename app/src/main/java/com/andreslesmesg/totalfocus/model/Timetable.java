@@ -82,13 +82,35 @@ public class Timetable {
                 }
             }
         }
+
         if(days.length()>1){
             days+=".";
         }
+
         return days;
     }
 
     public String getAlarmHour() {
-        return ""+hour+":"+min;
+        String time="";
+
+        if (hour>12){
+            time += String.valueOf((hour-12));
+        }else{
+            time += String.valueOf((hour));
+        }
+
+        if(min<10){
+            time+= ":0"+min;
+        }else{
+            time+= ":"+min;
+        }
+
+        if (hour>12){
+            time += " PM";
+        }else{
+            time += " AM";
+        }
+
+        return time;
     }
 }
