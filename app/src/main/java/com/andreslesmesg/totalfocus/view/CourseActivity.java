@@ -1,7 +1,6 @@
 package com.andreslesmesg.totalfocus.view;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -68,7 +67,13 @@ public class CourseActivity extends AppCompatActivity {
         }
 
         if(path!=null) {
-            iv_course_preview.setImageURI(path);
+
+            File file = new File(path.getPath());
+            if(file.exists()){
+                iv_course_preview.setImageURI(path);
+            }else {
+                path = null;
+            }
         }
 
         btn_add_image.setOnClickListener(v -> loadImage());

@@ -21,6 +21,7 @@ import com.andreslesmesg.totalfocus.controller.CourseController;
 import com.andreslesmesg.totalfocus.model.Course;
 import com.andreslesmesg.totalfocus.view.CourseActivity;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class CourseAdapterRV extends RecyclerView.Adapter<CourseAdapterRV.ViewHolder> {
@@ -80,7 +81,10 @@ public class CourseAdapterRV extends RecyclerView.Adapter<CourseAdapterRV.ViewHo
         }
 
         private void extracted(Course course) {
-            iv_course.setImageURI(course.getImageUri());
+            File file = new File(course.getImageUri().getPath());
+            if(file.exists()){
+                iv_course.setImageURI(course.getImageUri());
+            }
         }
 
         public void removeItem(int position) {
