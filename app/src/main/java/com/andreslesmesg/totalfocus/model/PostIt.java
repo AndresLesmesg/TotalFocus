@@ -21,6 +21,13 @@ public class PostIt {
         this.orientation = orientation;
     }
 
+    public PostIt(String title, String detail, boolean favorite) {
+        this.title = title;
+        this.detail = detail;
+        this.favorite = favorite;
+        this.orientation = false;
+    }
+
     public String getContent(){
         if(orientation){
             return detail;

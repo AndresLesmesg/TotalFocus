@@ -5,31 +5,34 @@ import com.andreslesmesg.totalfocus.model.Timetable;
 import java.util.ArrayList;
 
 public class TimetableController {
-    private static ArrayList<Timetable> tiemtables;
+    private static ArrayList<Timetable> timetables;
 
     public static void initTimetable(){
-        if(tiemtables==null){
-            tiemtables = new ArrayList<>();
+        if(timetables==null){
+            timetables = new ArrayList<>();
         }
     }
 
-    public  Timetable getTimetable(int id){
-        return tiemtables.get(id);
+    public static Timetable getTimetable(int id){
+        return timetables.get(id);
     }
 
     public static ArrayList<Timetable> getTimetables() {
-        return tiemtables;
+        return timetables;
     }
 
-    public static void setTimetable(int id, Timetable tiemtable){
-        tiemtables.set(id, tiemtable);
+    public static void setTimetable(int id, Timetable timetable){
+        timetables.set(id, timetable);
     }
-    public static void addTimetable(Timetable tiemtable){
-        tiemtables.add(tiemtable);
+
+    public static void addTimetable(Timetable timetable){
+        timetables.add(timetable);
     }
 
     public static void deleteTimetable(int id){
-        tiemtables.remove(id);
+        if(timetables!=null && timetables.size()>id){
+            timetables.remove(id);
+        }
     }
 
     public static void pullTimetables(){

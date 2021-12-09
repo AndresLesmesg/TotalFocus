@@ -18,6 +18,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.andreslesmesg.totalfocus.R;
+import com.andreslesmesg.totalfocus.controller.PostItController;
 import com.andreslesmesg.totalfocus.model.PostIt;
 import com.andreslesmesg.totalfocus.view.NoteActivity;
 
@@ -92,9 +93,13 @@ public class PostItAdapterRV extends RecyclerView.Adapter<PostItAdapterRV.ViewHo
         }
 
         public void removeItem(int position) {
+
             postIts.remove(position);
+            PostItController.deletePostIt(position);
+
             notifyItemRemoved(position);
             notifyItemChanged(position, postIts.size());
+
         }
 
         @SuppressLint("SetTextI18n")
@@ -144,9 +149,6 @@ public class PostItAdapterRV extends RecyclerView.Adapter<PostItAdapterRV.ViewHo
                         Intent intent = new Intent(itemView.getContext(), NoteActivity.class);
 
                         intent.putExtra("index", position);
-                        intent.putExtra("title", postIt.getTitle());
-                        intent.putExtra("details", postIt.getDetail());
-
                         context.startActivity(intent);
                         break;
 
@@ -157,6 +159,7 @@ public class PostItAdapterRV extends RecyclerView.Adapter<PostItAdapterRV.ViewHo
                 return false;
             });
             menu.show();
+            notifyItemChanged(position);
         }
     }
 }

@@ -18,7 +18,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.andreslesmesg.totalfocus.R;
-import com.andreslesmesg.totalfocus.controller.CourseController;
+import com.andreslesmesg.totalfocus.controller.NoteController;
 import com.andreslesmesg.totalfocus.model.Note;
 import com.andreslesmesg.totalfocus.view.NoteActivity;
 
@@ -92,7 +92,7 @@ public class NoteAdapterRV extends RecyclerView.Adapter<NoteAdapterRV.ViewHolder
             notes.remove(position);
             notifyItemRemoved(position);
             notifyItemChanged(position, notes.size());
-            CourseController.deleteCourse(position);
+            NoteController.deleteNote(position);
         }
 
         public void switchFavorite(Note note){
@@ -120,9 +120,9 @@ public class NoteAdapterRV extends RecyclerView.Adapter<NoteAdapterRV.ViewHolder
                 switch (item.getItemId()){
                     case R.id.item_edit:
                         Intent intent = new Intent(itemView.getContext(), NoteActivity.class);
-                        intent.putExtra("index", position);
 
-                        context.startActivityForResult(intent, Activity.RESULT_OK);
+                        intent.putExtra("index", position);
+                        context.startActivity(intent);
                         break;
 
                     case R.id.item_delete:

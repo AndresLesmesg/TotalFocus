@@ -14,13 +14,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.SwitchCompat;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.andreslesmesg.totalfocus.R;
+import com.andreslesmesg.totalfocus.controller.TimetableController;
 import com.andreslesmesg.totalfocus.model.Timetable;
-import com.andreslesmesg.totalfocus.view.NoteActivity;
 import com.andreslesmesg.totalfocus.view.TimetableActivity;
 
 import java.util.ArrayList;
@@ -99,6 +98,7 @@ public class TimetableAdapterRV extends RecyclerView.Adapter<TimetableAdapterRV.
             timetables.remove(position);
             notifyItemRemoved(position);
             notifyItemChanged(position, timetables.size());
+            TimetableController.deleteTimetable(position);
         }
 
         @SuppressLint("NonConstantResourceId")
@@ -112,11 +112,6 @@ public class TimetableAdapterRV extends RecyclerView.Adapter<TimetableAdapterRV.
                         Intent intent = new Intent(itemView.getContext(), TimetableActivity.class);
 
                         intent.putExtra("index", position);
-                        intent.putExtra("title", timetable.getTitle());
-                        intent.putExtra("minutes", timetable.getMin());
-                        intent.putExtra("hour", timetable.getHour());
-                        intent.putExtra("days", timetable.getEnableDays());
-
                         context.startActivity(intent);
                         break;
 
@@ -127,6 +122,7 @@ public class TimetableAdapterRV extends RecyclerView.Adapter<TimetableAdapterRV.
                 return false;
             });
             menu.show();
+            notifyItemChanged(position);
         }
     }
 }

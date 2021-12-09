@@ -13,7 +13,7 @@ public class NoteController {
         }
     }
 
-    public  Note getNote(int id){
+    public static Note getNote(int id){
         return notes.get(id);
     }
 
@@ -29,7 +29,9 @@ public class NoteController {
     }
 
     public static void deleteNote(int id){
-        notes.remove(id);
+        if(notes!=null && notes.size()>id){
+            notes.remove(id);
+        }
     }
 
     public static void pullNotes(){

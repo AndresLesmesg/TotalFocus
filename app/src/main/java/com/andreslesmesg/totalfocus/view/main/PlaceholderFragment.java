@@ -128,10 +128,12 @@ public class PlaceholderFragment extends Fragment {
     }
 
     private static ArrayList<PostIt> getPostIts() {
+        PostItController.initPostIt();
         return PostItController.getPostIts();
     }
 
     private static ArrayList<Timetable> getTimetables() {
+        TimetableController.initTimetable();
         return TimetableController.getTimetables();
     }
 

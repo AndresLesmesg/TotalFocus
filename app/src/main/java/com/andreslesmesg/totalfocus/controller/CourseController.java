@@ -29,7 +29,9 @@ public class CourseController {
     }
 
     public static void deleteCourse(int id){
-        courses.remove(id);
+        if(courses!=null && courses.size()>id){
+            courses.remove(id);
+        }
     }
 
     public static void pullCourses(){

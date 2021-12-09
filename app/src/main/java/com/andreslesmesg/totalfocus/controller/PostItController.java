@@ -13,7 +13,7 @@ public class PostItController {
         }
     }
 
-    public PostIt getPostIt(int id){
+    public static PostIt getPostIt(int id){
         return postIts.get(id);
     }
 
@@ -24,12 +24,15 @@ public class PostItController {
     public static void setPostIt(int id, PostIt postIt){
         postIts.set(id, postIt);
     }
+
     public static void addPostIt(PostIt postIt){
         postIts.add(postIt);
     }
 
     public static void deletePostIt(int id){
-        postIts.remove(id);
+        if(postIts!=null && postIts.size()>id){
+            postIts.remove(id);
+        }
     }
 
     public static void pullPostIts(){

@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.andreslesmesg.totalfocus.MainActivity;
 import com.andreslesmesg.totalfocus.R;
+import com.andreslesmesg.totalfocus.controller.CourseController;
 import com.andreslesmesg.totalfocus.controller.NoteController;
 import com.andreslesmesg.totalfocus.model.Note;
 
@@ -29,10 +30,13 @@ public class NoteActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         if(bundle!=null){
             position = bundle.getInt("position");
-            title = bundle.getString("title");
-            category = bundle.getString("category");
-            content = bundle.getString("content");
-            favorite = bundle.getBoolean("favorite");
+        }
+
+        if(position>-1){
+            title = NoteController.getNote(position).getTitle();
+            content = NoteController.getNote(position).getContent();
+            category = NoteController.getNote(position).getCategory();
+            favorite = NoteController.getNote(position).getFavorite();
         }
 
         et_title_note = findViewById(R.id.et_title_note);
@@ -63,19 +67,17 @@ public class NoteActivity extends AppCompatActivity {
 
     private void saveNote() {
 
-        String title = et_title_note.getText().toString();
+        String title_ = et_title_note.getText().toString();
+        String content_ = et_content_note.getText().toString();
 
-        if(!title.equals("") && NoteController.getNotes().isEmpty()){
+        if(!title_.equals("")){
             if(position>-1){
                 /*Edit Note*/
-                NoteController.setNote(position, new Note(et_title_note.getText().toString(),
-                                et_content_note.getText().toString(), 0, favorite));
+                NoteController.setNote(position, new Note(title_, content_, 0, favorite));
             }else {
                 /*New Note*/
-                NoteController.addNote(new Note(et_title_note.getText().toString(),
-                        et_content_note.getText().toString(), 1));
+                NoteController.addNote(new Note(title_, content_, 1));
             }
-
         }
 
         finish();
