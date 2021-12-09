@@ -4,7 +4,7 @@ public class Note {
 
     private String title, content;
     private int category;
-    private Boolean favorite;
+    private boolean favorite;
     public final String[] CATEGORIES = {"Arte", "Cocina", "Tecnología", "Manualidades", "Capacitación"};
 
     public Note(String title, int category) {
@@ -14,7 +14,14 @@ public class Note {
         this.content = "";
     }
 
-    public Note(String title, String content, int category,Boolean favorite) {
+    public Note(String title, String content , int category) {
+        this.title = title;
+        this.category = category;
+        this.favorite = false;
+        this.content = content;
+    }
+
+    public Note(String title, String content, int category, boolean favorite) {
         this.title = title;
         this.category = category;
         this.favorite = favorite;
@@ -45,11 +52,11 @@ public class Note {
         this.category = category;
     }
 
-    public Boolean getFavorite() {
+    public boolean getFavorite() {
         return favorite;
     }
 
-    public void setFavorite(Boolean favorite) {
+    public void setFavorite(boolean favorite) {
         this.favorite = favorite;
     }
 

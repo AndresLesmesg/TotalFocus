@@ -10,10 +10,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.andreslesmesg.totalfocus.MainActivity;
 import com.andreslesmesg.totalfocus.R;
+import com.andreslesmesg.totalfocus.controller.NoteController;
+import com.andreslesmesg.totalfocus.model.Note;
 
 public class NoteActivity extends AppCompatActivity {
 
     private int position;
+    private boolean favorite;
     private String title, category, content;
 
     private EditText et_title_note, et_category_note, et_content_note;
@@ -29,6 +32,7 @@ public class NoteActivity extends AppCompatActivity {
             title = bundle.getString("title");
             category = bundle.getString("category");
             content = bundle.getString("content");
+            favorite = bundle.getBoolean("favorite");
         }
 
         et_title_note = findViewById(R.id.et_title_note);
@@ -51,15 +55,30 @@ public class NoteActivity extends AppCompatActivity {
 
         Button btn_save_note = findViewById(R.id.btn_save_note);
         btn_save_note.setOnClickListener(v -> {
-            Intent intent = new Intent(NoteActivity.this, MainActivity.class);
-
-            intent.putExtra("index", position);
-            intent.putExtra("title", et_title_note.getText());
-            intent.putExtra("content", et_content_note.getText());
-            intent.putExtra("category", et_category_note.getText());
-
-            startActivity(intent);
+            saveNote();
         });
 
     }
+
+
+    private void saveNote() {
+
+        String title = et_title_note.getText().toString();
+
+        if(!title.equals("") && NoteController.getNotes().isEmpty()){
+            if(position>-1){
+                /*Edit Note*/
+                NoteController.setNote(position, new Note(et_title_note.getText().toString(),
+                                et_content_note.getText().toString(), 0, favorite));
+            }else {
+                /*New Note*/
+                NoteController.addNote(new Note(et_title_note.getText().toString(),
+                        et_content_note.getText().toString(), 1));
+            }
+
+        }
+
+        finish();
+    }
+
 }

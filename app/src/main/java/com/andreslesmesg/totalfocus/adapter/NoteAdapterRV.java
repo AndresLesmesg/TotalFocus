@@ -18,6 +18,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.andreslesmesg.totalfocus.R;
+import com.andreslesmesg.totalfocus.controller.CourseController;
 import com.andreslesmesg.totalfocus.model.Note;
 import com.andreslesmesg.totalfocus.view.NoteActivity;
 
@@ -91,6 +92,7 @@ public class NoteAdapterRV extends RecyclerView.Adapter<NoteAdapterRV.ViewHolder
             notes.remove(position);
             notifyItemRemoved(position);
             notifyItemChanged(position, notes.size());
+            CourseController.deleteCourse(position);
         }
 
         public void switchFavorite(Note note){
@@ -118,14 +120,9 @@ public class NoteAdapterRV extends RecyclerView.Adapter<NoteAdapterRV.ViewHolder
                 switch (item.getItemId()){
                     case R.id.item_edit:
                         Intent intent = new Intent(itemView.getContext(), NoteActivity.class);
-
                         intent.putExtra("index", position);
-                        intent.putExtra("title", note.getTitle());
-                        intent.putExtra("content", note.getContent());
-                        intent.putExtra("category", note.getCategory());
-                        intent.putExtra("favorite", note.getFavorite());
 
-                        context.startActivity(intent);
+                        context.startActivityForResult(intent, Activity.RESULT_OK);
                         break;
 
                     case R.id.item_delete:
@@ -135,6 +132,7 @@ public class NoteAdapterRV extends RecyclerView.Adapter<NoteAdapterRV.ViewHolder
                 return false;
             });
             menu.show();
+            notifyItemChanged(position);
         }
     }
 }
