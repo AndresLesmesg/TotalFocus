@@ -47,12 +47,6 @@ public class MainActivity extends AppCompatActivity {
         TimetableController.initTimetable();
         CategoryController.initCategories();
 
-        Bundle bundle = getIntent().getExtras();
-        if (bundle != null) {
-            SessionController.initUserId(bundle.getString("user_id"));
-            Toast.makeText(this, "id: "+SessionController.getUserId(), Toast.LENGTH_LONG).show();
-        }
-
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -91,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
         int permissionCheckWrite = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
         int permissionCheckRead = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
 
-
     }
 
     @Override
@@ -123,6 +116,13 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+    }
+
+
+    @Override
+    public void finish() {
+        navToLogin();
+        super.finish();
     }
 
     private void navToLogin(){

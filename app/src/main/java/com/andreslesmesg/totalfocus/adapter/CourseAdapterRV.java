@@ -20,7 +20,6 @@ import com.andreslesmesg.totalfocus.controller.CourseController;
 import com.andreslesmesg.totalfocus.model.Course;
 import com.andreslesmesg.totalfocus.view.CourseActivity;
 
-import java.io.File;
 import java.util.ArrayList;
 
 public class CourseAdapterRV extends RecyclerView.Adapter<CourseAdapterRV.ViewHolder> {
@@ -45,7 +44,7 @@ public class CourseAdapterRV extends RecyclerView.Adapter<CourseAdapterRV.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.loadData(courses.get(position));
-        holder.btn_more_course.setOnClickListener(v -> holder.showMenu(courses.get(position), position));
+        holder.btn_more_course.setOnClickListener(v -> holder.showMenu(position));
 
     }
 
@@ -74,28 +73,25 @@ public class CourseAdapterRV extends RecyclerView.Adapter<CourseAdapterRV.ViewHo
         }
 
         public void loadData(Course course) {
-            extracted(course);
-            tv_title_course.setText(course.getTitle());
-            tv_category_course.setText(course.getCategory());
-        }
-
-        private void extracted(Course course) {
             if(course.getImageUri()!=null){
                 iv_course.setImageURI(course.getImageUri());
             }
+            tv_title_course.setText(course.getTitle());
+            tv_category_course.setText(course.getCategory());
         }
 
         public void removeItem(int position) {
 
             courses.remove(position);
+            CourseController.deleteCourse(position);
+
             notifyItemRemoved(position);
             notifyItemChanged(position, courses.size());
-            CourseController.deleteCourse(position);
 
         }
 
         @SuppressLint("NonConstantResourceId")
-        public void showMenu(Course course, int position) {
+        public void showMenu(int position) {
             menu.getMenu().clear(); //Clear Menu - Fix Generate infinite Menu
             menu.getMenuInflater().inflate(R.menu.menu_resource, menu.getMenu());
             menu.setOnMenuItemClickListener(item -> {
@@ -103,7 +99,7 @@ public class CourseAdapterRV extends RecyclerView.Adapter<CourseAdapterRV.ViewHo
                 switch (item.getItemId()){
                     case R.id.item_edit:
                         Intent intent = new Intent(itemView.getContext(), CourseActivity.class);
-                        intent.putExtra("index", position);
+                        intent.putExtra("position", position);
                         context.startActivityForResult(intent, Activity.RESULT_OK);
 
                         break;

@@ -35,11 +35,4 @@ public class PostItController {
         }
     }
 
-    public static void pullPostIts(){
-
-    }
-
-    public static void pushPostIts(){
-
-    }
 }

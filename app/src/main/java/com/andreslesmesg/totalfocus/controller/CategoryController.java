@@ -23,6 +23,7 @@ public class CategoryController {
     public static void setCourse(int id, String category){
         categories.set(id, category);
     }
+
     public static void addCourse(String category){
         categories.add(category);
     }
@@ -31,11 +32,4 @@ public class CategoryController {
         categories.remove(id);
     }
 
-    public static void pullCategories(){
-
-    }
-
-    public static void pushCategories(){
-
-    }
 }

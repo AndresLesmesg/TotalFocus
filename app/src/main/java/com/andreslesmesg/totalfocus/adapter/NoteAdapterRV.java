@@ -52,7 +52,7 @@ public class NoteAdapterRV extends RecyclerView.Adapter<NoteAdapterRV.ViewHolder
             holder.btn_favorite_note.setAnimation(holder.fadeOut);
         });
 
-        holder.btn_more_note.setOnClickListener(v -> holder.showMenu(notes.get(position), position));
+        holder.btn_more_note.setOnClickListener(v -> holder.showMenu(position));
     }
 
     @Override
@@ -112,7 +112,7 @@ public class NoteAdapterRV extends RecyclerView.Adapter<NoteAdapterRV.ViewHolder
         }
 
         @SuppressLint("NonConstantResourceId")
-        public void showMenu(Note note, int position) {
+        public void showMenu(int position) {
             menu.getMenu().clear(); //Clear Menu - Fix Generate infinite Menu
             menu.getMenuInflater().inflate(R.menu.menu_resource, menu.getMenu());
             menu.setOnMenuItemClickListener(item -> {

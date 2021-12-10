@@ -36,14 +36,12 @@ public class RegisterController {
     private static void userFirestore(Context context, String name, String email) {
 
         try{
-            FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-            String id = firebaseUser.getUid();
+            String id = ConstFirebase.currentUser.getUid();
 
-            long timeCreate = firebaseUser.getMetadata().getCreationTimestamp();
+            long timeCreate = ConstFirebase.currentUser.getMetadata().getCreationTimestamp();
             User user = new User(id, name, email, timeCreate);
 
-            FirebaseFirestore.getInstance()
-                    .collection(ConstFirebase.USERS)
+            ConstFirebase.db.collection(ConstFirebase.USERS)
                     .document(id)
                     .set(user, SetOptions.merge())
                     .addOnCompleteListener(new OnCompleteListener<Void>() {

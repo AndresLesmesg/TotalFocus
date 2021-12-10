@@ -24,6 +24,7 @@ public class NoteController {
     public static void setNote(int id, Note note){
         notes.set(id, note);
     }
+
     public static void addNote(Note note){
         notes.add(note);
     }
@@ -34,11 +35,4 @@ public class NoteController {
         }
     }
 
-    public static void pullNotes(){
-
-    }
-
-    public static void pushNotes(){
-
-    }
 }

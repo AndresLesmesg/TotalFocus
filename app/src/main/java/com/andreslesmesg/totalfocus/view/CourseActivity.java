@@ -19,7 +19,6 @@ import com.andreslesmesg.totalfocus.R;
 import com.andreslesmesg.totalfocus.controller.CourseController;
 import com.andreslesmesg.totalfocus.model.Course;
 import com.andreslesmesg.totalfocus.utilis.GenerateId;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -35,8 +34,6 @@ public class CourseActivity extends AppCompatActivity {
     private EditText et_title_course, et_category_course;
     private ImageView iv_course_preview;
     private Bitmap image;
-
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -71,19 +68,14 @@ public class CourseActivity extends AppCompatActivity {
         }
 
         if(path!=null) {
-
-            File file = new File(path.getPath());
-            if(file.exists()){
-                iv_course_preview.setImageURI(path);
-            }else {
-                path = null;
-            }
+            iv_course_preview.setImageURI(path);
         }
 
         btn_add_image.setOnClickListener(v -> loadImage());
 
         btn_save_course.setOnClickListener(v -> saveCourse());
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -101,35 +93,38 @@ public class CourseActivity extends AppCompatActivity {
 
         if (CourseController.getCourses()!=null && !title.equals("")){
             if(position>-1){
-                if(path!=null){
+                /*Update Course*/
+                Course course;
+                course = CourseController.getCourse(position);
 
+                if(path!=null){
                     createImage();
 
                     String filename = path.toString();
                     filename = filename.substring(filename.lastIndexOf("/")+1);
 
-                    if(saveImage(image, filename)){
-                        CourseController.setCourse(position, new Course(et_title_course.getText().toString(), 1, imageUri));
-                    }else{
-                        CourseController.setCourse(position, new Course(et_title_course.getText().toString(), 1, path));
-                    }
-                }else{
-                    CourseController.setCourse(position, new Course(et_title_course.getText().toString(), 1));
-                }
-            }else {
-                if(path!=null){
+                    course.setTitle(et_title_course.getText().toString());
 
+                    if(saveImage(image, filename)){
+                        course.setImageUri(imageUri);
+                    }else{
+                        course.setImageUri(path);
+                    }
+                }
+                CourseController.setCourse(position, course);
+            }else {
+                /*New Course*/
+                if(path!=null){
                     createImage();
                     if(saveImage(image, GenerateId.newId("IMG-"))){
                         CourseController.addCourse( new Course(et_title_course.getText().toString(), 0, imageUri));
                     }else{
                         CourseController.addCourse(new Course(et_title_course.getText().toString(), 0, path));
-                        CourseController.pullCourse(db, position);
                     }
                 }else {
                     CourseController.addCourse(new Course(et_title_course.getText().toString(), 0));
                 }
-
+                CourseController.pushCourse(CourseActivity.this, CourseController.getCourses().size()-1);
             }
         }
         finish();

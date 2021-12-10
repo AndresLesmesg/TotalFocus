@@ -58,7 +58,7 @@ public class PostItAdapterRV extends RecyclerView.Adapter<PostItAdapterRV.ViewHo
             holder.btn_favorite_post.setAnimation(holder.fadeOut);
         });
 
-        holder.btn_more_post.setOnClickListener(v -> holder.showMenu(postIts.get(position), position));
+        holder.btn_more_post.setOnClickListener(v -> holder.showMenu(position));
     }
 
     @Override
@@ -139,7 +139,7 @@ public class PostItAdapterRV extends RecyclerView.Adapter<PostItAdapterRV.ViewHo
         }
 
         @SuppressLint("NonConstantResourceId")
-        public void showMenu(PostIt postIt, int position) {
+        public void showMenu(int position) {
             menu.getMenu().clear(); //Clear Menu - Fix Generate infinite Menu
             menu.getMenuInflater().inflate(R.menu.menu_resource, menu.getMenu());
             menu.setOnMenuItemClickListener(item -> {

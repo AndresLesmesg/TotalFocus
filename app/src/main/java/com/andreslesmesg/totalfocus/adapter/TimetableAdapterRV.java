@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.Switch;
@@ -47,18 +46,15 @@ public class TimetableAdapterRV extends RecyclerView.Adapter<TimetableAdapterRV.
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.loadData(timetables.get(position));
 
-        holder.sw_timetable.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked){
-                    Toast.makeText(context, "Notificación Activada",Toast.LENGTH_LONG).show();
-                }else {
-                    Toast.makeText(context, "Notificación Desactivada",Toast.LENGTH_LONG).show();
-                }
+        holder.sw_timetable.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked){
+                Toast.makeText(context, "Notificación Activada",Toast.LENGTH_LONG).show();
+            }else {
+                Toast.makeText(context, "Notificación Desactivada",Toast.LENGTH_LONG).show();
             }
         });
 
-        holder.btn_more_timetable.setOnClickListener(v -> holder.showMenu(timetables.get(position), position));
+        holder.btn_more_timetable.setOnClickListener(v -> holder.showMenu(position));
     }
 
     @Override
@@ -70,6 +66,7 @@ public class TimetableAdapterRV extends RecyclerView.Adapter<TimetableAdapterRV.
 
         CardView cv_timetable;
         ImageButton btn_more_timetable;
+        @SuppressLint("UseSwitchCompatOrMaterialCode")
         Switch sw_timetable;
         TextView tv_title_timetable;
         TextView tv_days_timetable;
@@ -102,7 +99,7 @@ public class TimetableAdapterRV extends RecyclerView.Adapter<TimetableAdapterRV.
         }
 
         @SuppressLint("NonConstantResourceId")
-        public void showMenu(Timetable timetable, int position) {
+        public void showMenu(int position) {
             menu.getMenu().clear(); //Clear Menu - Fix Generate infinite Menu
             menu.getMenuInflater().inflate(R.menu.menu_resource, menu.getMenu());
             menu.setOnMenuItemClickListener(item -> {

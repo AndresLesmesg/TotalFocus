@@ -35,11 +35,4 @@ public class TimetableController {
         }
     }
 
-    public static void pullTimetables(){
-
-    }
-
-    public static void pushTimetables(){
-
-    }
 }
