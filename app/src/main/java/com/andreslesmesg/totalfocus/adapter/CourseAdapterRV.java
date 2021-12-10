@@ -10,7 +10,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -81,8 +80,7 @@ public class CourseAdapterRV extends RecyclerView.Adapter<CourseAdapterRV.ViewHo
         }
 
         private void extracted(Course course) {
-            File file = new File(course.getImageUri().getPath());
-            if(file.exists()){
+            if(course.getImageUri()!=null){
                 iv_course.setImageURI(course.getImageUri());
             }
         }

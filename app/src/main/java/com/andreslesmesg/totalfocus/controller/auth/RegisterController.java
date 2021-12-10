@@ -27,7 +27,7 @@ public class RegisterController {
                         if(task.isSuccessful()){
                             userFirestore(context, name, email);
                         }else {
-                            Toast.makeText(context, "Error al intetar Registrase", Toast.LENGTH_LONG).show();
+                            Toast.makeText(context, "Error al intentar Registrase", Toast.LENGTH_LONG).show();
                         }
                     }
                 });
@@ -38,6 +38,7 @@ public class RegisterController {
         try{
             FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
             String id = firebaseUser.getUid();
+
             long timeCreate = firebaseUser.getMetadata().getCreationTimestamp();
             User user = new User(id, name, email, timeCreate);
 
@@ -50,8 +51,7 @@ public class RegisterController {
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()){
                                 Intent intent = new Intent(context, MainActivity.class);
-                                intent.putExtra("email",user.getEmail());
-                                intent.putExtra("name", user.getName());
+                                intent.putExtra("email",user.getId());
                                 context.startActivity(intent);
                             }else {
                                 Toast.makeText(context, "Error al intentar Guardar datos del Usiario", Toast.LENGTH_LONG).show();

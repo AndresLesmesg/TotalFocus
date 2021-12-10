@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +17,7 @@ import com.andreslesmesg.totalfocus.controller.CourseController;
 import com.andreslesmesg.totalfocus.controller.NoteController;
 import com.andreslesmesg.totalfocus.controller.PostItController;
 import com.andreslesmesg.totalfocus.controller.TimetableController;
+import com.andreslesmesg.totalfocus.controller.auth.SessionController;
 import com.andreslesmesg.totalfocus.databinding.ActivityMainBinding;
 import com.andreslesmesg.totalfocus.view.CourseActivity;
 import com.andreslesmesg.totalfocus.view.NoteActivity;
@@ -44,6 +46,12 @@ public class MainActivity extends AppCompatActivity {
         PostItController.initPostIt();
         TimetableController.initTimetable();
         CategoryController.initCategories();
+
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            SessionController.initUserId(bundle.getString("user_id"));
+            Toast.makeText(this, "id: "+SessionController.getUserId(), Toast.LENGTH_LONG).show();
+        }
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -79,9 +87,10 @@ public class MainActivity extends AppCompatActivity {
         checkPermissionWriteExternalStorage();
         checkPermissionInternet();
 
+        int permissionCheckNet = ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET);
         int permissionCheckWrite = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
         int permissionCheckRead = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
-        int permissionCheckNet = ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET);
+
 
     }
 

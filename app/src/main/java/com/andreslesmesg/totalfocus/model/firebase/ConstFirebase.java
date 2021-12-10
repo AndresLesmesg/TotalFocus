@@ -10,5 +10,5 @@ public class ConstFirebase {
     public static final String TIMETABLES = "timetables";
     public static final String USERS = "users";
 
-    public static final FirebaseFirestore DB = FirebaseFirestore.getInstance();
+    public static FirebaseFirestore db = FirebaseFirestore.getInstance();
 }

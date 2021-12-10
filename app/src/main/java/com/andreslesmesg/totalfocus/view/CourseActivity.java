@@ -19,6 +19,7 @@ import com.andreslesmesg.totalfocus.R;
 import com.andreslesmesg.totalfocus.controller.CourseController;
 import com.andreslesmesg.totalfocus.model.Course;
 import com.andreslesmesg.totalfocus.utilis.GenerateId;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -35,10 +36,13 @@ public class CourseActivity extends AppCompatActivity {
     private ImageView iv_course_preview;
     private Bitmap image;
 
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course);
+
 
         Bundle bundle = getIntent().getExtras();
         if(bundle!=null){
@@ -120,6 +124,7 @@ public class CourseActivity extends AppCompatActivity {
                         CourseController.addCourse( new Course(et_title_course.getText().toString(), 0, imageUri));
                     }else{
                         CourseController.addCourse(new Course(et_title_course.getText().toString(), 0, path));
+                        CourseController.pullCourse(db, position);
                     }
                 }else {
                     CourseController.addCourse(new Course(et_title_course.getText().toString(), 0));
